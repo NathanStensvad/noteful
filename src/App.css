@@ -1,0 +1,16 @@
+.folders, h1 {
+  text-align: center
+}
+
+.group {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  flex: 1;
+}
+
+.item-double {
+  flex: 2;
+}
