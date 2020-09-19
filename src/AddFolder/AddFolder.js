@@ -8,7 +8,8 @@ class AddFolder extends Component {
       <>
         <div className="group">
           <BackButton/>
-          <AddFolderForm/>
+          <AddFolderForm
+          routeInfo={this.props.routeInfo}/>
         </div>
       </>
     );

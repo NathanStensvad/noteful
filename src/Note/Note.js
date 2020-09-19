@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
+import NoteContext from '../NoteContext';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 class Note extends Component {
+  static contextType = NoteContext;
+  
   checkForUndefined() {
-    if (this.props.notes.find(note => note.id === this.props.routeInfo.match.params.id) !== undefined) {
-      return this.props.notes.find(note => note.id === this.props.routeInfo.match.params.id).content
+    if (this.context.notes.find(note => note.id === this.props.routeInfo.match.params.id) !== undefined) {
+      return this.context.notes.find(note => note.id === this.props.routeInfo.match.params.id).content
     }
     else {
       return "";
@@ -13,13 +17,12 @@ class Note extends Component {
   }
 
   render() {
-
     return (
       <>
         <div className="group">
           <BackButton/>
           <section className="item-double">
-            {this.props.notes
+            {this.context.notes
               .filter(note =>
                 note.id === this.props.routeInfo.match.params.id)
               .map(note => (
@@ -31,7 +34,10 @@ class Note extends Component {
                     <p>Date modified on {new Date(note.modified).toLocaleDateString()}</p>
                   </section>
                   <section className="item">
-                    <p>Delete Item</p>
+                    <DeleteButton
+                    id = {note.id}
+                    routeInfo= {this.props.routeInfo}
+                    />
                   </section>
                 </div>
               ))}

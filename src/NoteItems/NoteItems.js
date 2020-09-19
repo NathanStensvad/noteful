@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import NoteContext from '../NoteContext';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 class NoteItems extends Component {
+
+  static contextType = NoteContext;
+
   render() {
     return (
       <section className="item-double">
@@ -14,7 +19,9 @@ class NoteItems extends Component {
               <p>Date modified on {new Date(note.modified).toLocaleDateString()}</p>
             </section>
             <section className="item">
-              <p>Delete Item</p>
+              <DeleteButton
+              id = {note.id}
+              routeInfo = {this.props.routeInfo}/>
             </section>
           </div>
         ))}
