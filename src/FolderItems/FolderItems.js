@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import NoteContext from '../NoteContext';
 
 class FolderItems extends Component {
@@ -13,14 +13,14 @@ class FolderItems extends Component {
 
   render() {
     return (
-      <section className="item folders">
+      <ul className="item folders">
         {this.context.folders.map(folder => (
-          <h2 key={folder.id} id ={folder.id}>
-            <Link to={`/folders/${folder.id}`}>{folder.name}</Link>
-          </h2>
+          <li key={folder.id} className='Nav_Folders'>
+            <NavLink to={`/folders/${folder.id}`}>{folder.name}</NavLink>
+          </li>
         ))}
         <Link to={'/add-folder'}><h3>Add folder</h3></Link>
-      </section>
+      </ul>
     );
   }
 }
