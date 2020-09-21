@@ -55,7 +55,6 @@ class App extends Component {
     this.setState( {
       notes: smallerArray
     })
-    console.log(smallerArray);
   }
 
   render() {

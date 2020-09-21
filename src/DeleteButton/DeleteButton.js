@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import NoteContext from '../NoteContext';
 
 class DeleteButton extends Component {
+    
     static contextType = NoteContext;
 
     handleDelete = e => {
@@ -19,17 +21,21 @@ class DeleteButton extends Component {
         if(this.props.routeInfo.location.pathname.startsWith("/notes/")) {
             this.props.routeInfo.history.push('/');
         }
-        
 
         this.context.deleteNote(deletedNote);
     }
 
 
+    //The props here is coming from a map from NoteItems.js ; I'm also using it in Note.js
     render() {
         return (
             <button type="button" onClick={this.handleDelete} id={this.props.id}>Delete Note</button>
         )
     }
 }
+
+DeleteButton.propTypes = {
+    id: PropTypes.string
+};
 
 export default DeleteButton;

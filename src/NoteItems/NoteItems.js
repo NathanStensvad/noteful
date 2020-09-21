@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import NoteContext from '../NoteContext';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
@@ -10,6 +11,7 @@ class NoteItems extends Component {
   render() {
     return (
       <section className="item-double">
+        {/*I have to use props here because Folder.js does some filtering*/}
         {this.props.notes.map(note => (
           <div key={note.id} className="group">
             <section className="item">
@@ -29,6 +31,10 @@ class NoteItems extends Component {
       </section>
     );
   }
+}
+
+NoteItems.propTypes = {
+  notes: PropTypes.array
 }
 
 export default NoteItems;

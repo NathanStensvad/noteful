@@ -6,13 +6,36 @@ class AddNoteForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let name = document.getElementById('name').value;
-    let content = document.getElementById('content').value;
-    let folder = document.getElementById('folder-select').value;
+    let name = e.target.name.value;
+    let content = e.target.content.value;
+    let folder = e.target.folderSelect.value;
 
     if (name === '') {
       return alert('Enter a valid name')
     }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: `${name}`,
+        modified: `${new Date().toISOString()}`,
+        folderId: `${folder}`,
+        content: `${content}`,
+        id: `${name}`
+      })
+    }
+
+    fetch(`http://localhost:9090/notes/`, requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                alert('something went wrong');
+            })
 
     this.context.addNote(name, content, folder);
 
@@ -22,7 +45,7 @@ class AddNoteForm extends Component {
   render() {
     return (
       <>
-        <form className="item" onSubmit={this.handleSubmit}>
+        <form className="item" onSubmit={e => this.handleSubmit(e)}>
           <div>
             <h3>Name</h3>
             <input type="text" id="name" />
@@ -33,7 +56,7 @@ class AddNoteForm extends Component {
           </div>
           <div>
             <h3>Folder</h3>
-            <select id="folder-select">
+            <select id="folderSelect">
               {this.context.folders.map(folder => (
                 <option key={folder.id} id={folder.id}>
                   {folder.name}

@@ -6,7 +6,8 @@ class AddFolderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let folderName = document.getElementById('textBox').value;
+    console.log(e.target.folderName.value);
+    let folderName = e.target.folderName.value;
 
     if(folderName === '') {
       return alert('Enter a valid name');
@@ -14,6 +15,26 @@ class AddFolderForm extends Component {
     if(this.context.folders.find(folder => folder.name === folderName) !== undefined) {
       return alert('Folder already exists')
     }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: `${folderName}`,
+        id: `${folderName}`
+      })
+    }
+
+    fetch(`http://localhost:9090/folders/`, requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                alert('something went wrong');
+            })
 
     this.context.addFolder(folderName);
 
@@ -23,10 +44,10 @@ class AddFolderForm extends Component {
   render() {
     return (
       <>
-        <form className="item" onSubmit={this.handleSubmit}>
+        <form className="item" onSubmit={e => this.handleSubmit(e)}>
           <div>
             <h3>Name</h3>
-            <input type="text" id="textBox" />
+            <input type="text" id="folderName" />
             <button type="submit">Add Folder</button>
           </div>
         </form>
