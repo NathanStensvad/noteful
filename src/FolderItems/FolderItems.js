@@ -13,13 +13,15 @@ class FolderItems extends Component {
 
   render() {
     return (
-      <ul className="item folders">
+      <ul className="item">
         {this.context.folders.map(folder => (
-          <li key={folder.id} className='Nav_Folders'>
+          <li key={folder.id} className='Nav_Folders Folder'>
             <NavLink to={`/folders/${folder.id}`}>{folder.name}</NavLink>
           </li>
         ))}
+        <li>
         <Link to={'/add-folder'}><h3>Add folder</h3></Link>
+        </li>
       </ul>
     );
   }

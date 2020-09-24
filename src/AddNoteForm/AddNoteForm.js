@@ -63,6 +63,7 @@ class AddNoteForm extends Component {
                 </option>
               ))}
             </select>
+            <br/>
             <button type="submit">Add Note</button>
           </div>
         </form>

@@ -1,19 +1,71 @@
-.folders, h1 {
-  text-align: center
+* {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  /**/
+}
+
+body {
+  background-color: ;
+}
+
+h1 {
+  background-color: #A63A50;
+  padding: 50px;
+  font-size: 60px;
+  text-align: center;
+  color: #50a63a;
+}
+
+h3 {
+  font-size: 30px;
+  text-align: center;
+  padding: 20px;
+}
+
+ul {
+  background-color: #3C91E6;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  border: 0;
+  background-color: #FFCE5C;
+  margin: 10px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #A63A50;
+  text-align: center;
+}
+
+.Note {
+  background-color:  #FFB400;
+  margin: 10px;
+  
+}
+
+.Folder{
+  text-align: center;
+  background-color: #FFB400;
+  font-size: 30px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.folder_background {
+  background-color: #0D2C54;
 }
 .active {
-  background-color: green;
+  color:  #50a63a;
 }
 
 .group {
   display: flex;
   justify-content: center;
-}
-
-.item {
-  flex: 1;
-}
-
-.item-double {
-  flex: 2;
 }

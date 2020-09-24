@@ -10,10 +10,10 @@ class NoteItems extends Component {
 
   render() {
     return (
-      <section className="item-double">
+      <section className="item-double folder_background">
         {/*I have to use props here because Folder.js does some filtering*/}
         {this.props.notes.map(note => (
-          <div key={note.id} className="group">
+          <div key={note.id} className="group Note">
             <section className="item">
               <h2>
                 <Link to={`/notes/${note.id}`}>{note.name}</Link>

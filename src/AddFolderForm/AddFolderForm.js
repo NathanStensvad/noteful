@@ -48,6 +48,7 @@ class AddFolderForm extends Component {
           <div>
             <h3>Name</h3>
             <input type="text" id="folderName" />
+            <br/>
             <button type="submit">Add Folder</button>
           </div>
         </form>

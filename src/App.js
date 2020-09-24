@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import './App.css'
+import './App.css';
 import Home from "./Home/Home";
 import Folder from "./Folder/Folder";
 import Note from "./Note/Note";
@@ -16,6 +16,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    document.title = "Noteful";
+
     Promise.all([
       fetch(`http://localhost:9090/notes`),
       fetch(`http://localhost:9090/folders`)
