@@ -11,9 +11,6 @@ class AddFolderForm extends Component {
     let folderName = e.target.folderName.value;
 
     //validations
-    if(folderName === '') {
-      return alert('Enter a valid name');
-    }
     if(this.context.folders.find(folder => folder.name === folderName) !== undefined) {
       return alert('Folder already exists')
     }
@@ -51,7 +48,7 @@ class AddFolderForm extends Component {
         <form className="item" onSubmit={e => this.handleSubmit(e)}>
           <div>
             <h3>Name</h3>
-            <input type="text" id="folderName" />
+            <input type="text" id="folderName" required/>
             <br/>
             <button type="submit">Add Folder</button>
           </div>

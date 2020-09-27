@@ -10,16 +10,6 @@ class AddNoteForm extends Component {
     let content = e.target.content.value;
     let folder = e.target.folderSelect.value;
 
-    if (name === '') {
-      return alert('Enter a valid name')
-    }
-    if (content === '') {
-      return alert('Enter some content in your note')
-    }
-    if (folder === undefined || folder === '') {
-      return alert('Put your note in a valid folder')
-    }
-
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -54,15 +44,15 @@ class AddNoteForm extends Component {
         <form className="item" onSubmit={e => this.handleSubmit(e)}>
           <div>
             <h3>Name</h3>
-            <input type="text" id="name" />
+            <input type="text" id="name" required/>
           </div>
           <div>
             <h3>Content</h3>
-            <input type="text" id="content" />
+            <input type="text" id="content" required/>
           </div>
           <div>
             <h3>Folder</h3>
-            <select id="folderSelect">
+            <select id="folderSelect" required>
               {this.context.folders.map(folder => (
                 <option key={folder.id} id={folder.id}>
                   {folder.name}
