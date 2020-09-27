@@ -13,6 +13,12 @@ class AddNoteForm extends Component {
     if (name === '') {
       return alert('Enter a valid name')
     }
+    if (content === '') {
+      return alert('Enter some content in your note')
+    }
+    if (folder === undefined || folder === '') {
+      return alert('Put your note in a valid folder')
+    }
 
     const requestOptions = {
       method: 'POST',

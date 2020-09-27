@@ -6,15 +6,19 @@ class AddFolderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target.folderName.value);
+
+    //Detect the input from the form
     let folderName = e.target.folderName.value;
 
+    //validations
     if(folderName === '') {
       return alert('Enter a valid name');
     }
     if(this.context.folders.find(folder => folder.name === folderName) !== undefined) {
       return alert('Folder already exists')
     }
+
+    //fetch request
 
     const requestOptions = {
       method: 'POST',
@@ -29,15 +33,15 @@ class AddFolderForm extends Component {
     }
 
     fetch(`http://localhost:9090/folders/`, requestOptions)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                alert('something went wrong');
-            })
-
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          }
+          alert('something went wrong');
+        })
+    
+    //Add the folder in context and go to home
     this.context.addFolder(folderName);
-
     this.props.routeInfo.history.push('/');
   }
 
@@ -56,5 +60,4 @@ class AddFolderForm extends Component {
     );
   }
 }
-
 export default AddFolderForm;
