@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NoteContext from '../NoteContext';
+import config from '../config';
 
 class AddFolderForm extends Component {
   static contextType = NoteContext;
@@ -29,7 +30,7 @@ class AddFolderForm extends Component {
       })
     }
 
-    fetch(`http://localhost:9090/folders/`, requestOptions)
+    fetch(`${config.API_ENDPOINT}/folders/`, requestOptions)
       .then(response => {
           if (response.ok) {
               return response.json();

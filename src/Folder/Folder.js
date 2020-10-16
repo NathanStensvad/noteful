@@ -18,7 +18,7 @@ class Folder extends Component {
           </FolderError>
           <NoteError>
             <NoteItems
-              notes={this.context.notes.filter(note => note.folderId === this.props.routeInfo.match.params.id)}
+              notes={this.context.notes.filter(note => parseInt(note.folderId) === parseInt(this.props.routeInfo.match.params.id))}
               routeInfo={this.props.routeInfo} />
           </NoteError>
         </div>

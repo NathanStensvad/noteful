@@ -7,6 +7,7 @@ import Note from "./Note/Note";
 import AddFolder from './AddFolder/AddFolder';
 import AddNote from './AddNote/AddNote';
 import NoteContext from './NoteContext';
+import config from './config';
 
 class App extends Component {
 
@@ -20,8 +21,8 @@ class App extends Component {
     document.title = "Noteful";
 
     Promise.all([
-      fetch(`http://localhost:9090/notes`),
-      fetch(`http://localhost:9090/folders`)
+      fetch(`${config.API_ENDPOINT}/notes`),
+      fetch(`${config.API_ENDPOINT}/folders`)
     ])
         .then(([notesResults, foldersResults]) => {
           if(!notesResults.ok)
@@ -33,6 +34,7 @@ class App extends Component {
         })
         .then(([notes,folders]) => {
           this.setState({notes,folders});
+          console.log(this.state)
         })
         .catch(error => {
           console.error({error});

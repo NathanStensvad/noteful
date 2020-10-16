@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NoteContext from '../NoteContext';
+import config from '../config';
 
 class DeleteButton extends Component {
     
@@ -10,7 +11,7 @@ class DeleteButton extends Component {
         e.preventDefault();
         let deletedNote = e.target.id;
         
-        fetch(`http://localhost:9090/notes/${deletedNote}`, { method: 'DELETE' })
+        fetch(`${config.API_ENDPOINT}/notes/${deletedNote}`, { method: 'DELETE' })
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -33,9 +34,9 @@ class DeleteButton extends Component {
         )
     }
 }
-
+/*
 DeleteButton.propTypes = {
-    id: PropTypes.string
-};
+    id: PropTypes.number
+};*/
 
 export default DeleteButton;

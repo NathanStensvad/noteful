@@ -8,8 +8,8 @@ class Note extends Component {
   static contextType = NoteContext;
   
   checkForUndefined() {
-    if (this.context.notes.find(note => note.id === this.props.routeInfo.match.params.id) !== undefined) {
-      return this.context.notes.find(note => note.id === this.props.routeInfo.match.params.id).content
+    if (this.context.notes.find(note => parseInt(note.id) === parseInt(this.props.routeInfo.match.params.id)) !== undefined) {
+      return this.context.notes.find(note => parseInt(note.id) === parseInt(this.props.routeInfo.match.params.id)).content
     }
     else {
       return "";
@@ -24,7 +24,7 @@ class Note extends Component {
           <section className="item-double">
             {this.context.notes
               .filter(note =>
-                note.id === this.props.routeInfo.match.params.id)
+                parseInt(note.id) === parseInt(this.props.routeInfo.match.params.id))
               .map(note => (
                 <div key={note.id} className="group">
                   <section className="item">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NoteContext from '../NoteContext';
+import config from '../config';
 
 class AddNoteForm extends Component {
   static contextType = NoteContext;
@@ -25,7 +26,7 @@ class AddNoteForm extends Component {
       })
     }
 
-    fetch(`http://localhost:9090/notes/`, requestOptions)
+    fetch(`${config.API_ENDPOINT}/notes/`, requestOptions)
             .then(response => {
                 if (response.ok) {
                     return response.json();
