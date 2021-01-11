@@ -56,7 +56,7 @@ class App extends Component {
   }
 
   deleteNote = deletedNote => {
-    let smallerArray = this.state.notes.filter(note => note.id !== deletedNote)
+    let smallerArray = this.state.notes.filter(note => note.id != deletedNote)
     this.setState( {
       notes: smallerArray
     })

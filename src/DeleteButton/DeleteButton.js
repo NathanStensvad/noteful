@@ -14,10 +14,11 @@ class DeleteButton extends Component {
         fetch(`${config.API_ENDPOINT}/notes/${deletedNote}`, { method: 'DELETE' })
             .then(response => {
                 if (response.ok) {
-                    return response.json();
+                    return true;
                 }
                 alert('something went wrong');
             })
+            .then(() => this.context.deleteNote(deletedNote))
 
         if(this.props.routeInfo.location.pathname.startsWith("/notes/")) {
             this.props.routeInfo.history.push('/');
